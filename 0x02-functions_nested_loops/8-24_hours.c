@@ -15,7 +15,7 @@ void jack_bauer(void)
 
 	while (hr1 <= 2)
 	{
-		while (hr2 <= 5)
+		while (hr2 <= 9)
 		{
 			while (min1 <= 5)
 			{
