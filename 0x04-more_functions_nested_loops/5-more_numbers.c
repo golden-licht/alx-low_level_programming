@@ -22,7 +22,7 @@ void more_numbers(void)
 			else
 			{
 				_putchar(49);
-				_putchar(n-10);
+				_putchar(n - 10);
 				n++;
 			}
 		}
