@@ -15,14 +15,16 @@ int main(void)
 	while (n <= 100)
 	{
 		if (n % 3 == 0 && n % 5 == 0)
-			printf("FizzBuzz");
+			printf("FizzBuzz ");
 		else if (n % 3 == 0)
-			printf("Fizz");
+			printf("Fizz ");
 		else if (n % 5 == 0)
+		{
 			printf("Buzz");
+			if (n != 100)
+				printf(" ");
 		else
-			printf("%d", n);
-		printf(" ");
+			printf("%d ", n);
 		n++;
 	}
 	return (0);
