@@ -18,7 +18,7 @@ int main(void)
 	{
 		printf("%ld", z);
 		if (n != 49)
-			printf(", ");
+			printf(", \n");
 		z += y;
 		y = x;
 		x = z;
