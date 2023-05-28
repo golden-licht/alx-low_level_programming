@@ -18,11 +18,12 @@ int main(void)
 	{
 		printf("%ld", z);
 		if (n != 49)
-			printf(", \n");
+			printf(", ");
 		z += y;
 		y = x;
 		x = z;
 	}
+	printf("\n");
 	return (0);
 }
 
