@@ -15,8 +15,7 @@ void print_rev(char *s)
 	for (i = 0; s[i] != 0; i++)
 		ctr++;
 	/* print in reverse */
-	for (j = ctr; j >= 0; j--)
+	for (j = (ctr - 1); j >= 0; j--)
 		_putchar(s[j]);
-	_putchar('\n');
 }
 
