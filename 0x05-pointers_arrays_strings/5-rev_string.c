@@ -6,7 +6,7 @@
 void rev_string(char *s)
 {
 	int i, ctr, j;
-	char str[100];
+	char str[2000];
 
 	ctr = 0;
 	/* Determine the length of the string */
