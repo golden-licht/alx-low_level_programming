@@ -8,6 +8,8 @@
 void puts_half(char *str)
 {
 	int i, n, h;
+
+	n = 0;
 	/* Determine the length of the string */
 	for (i = 0; str[i] != 0; i++)
 		n++;
@@ -15,11 +17,12 @@ void puts_half(char *str)
 	if (n % 2 == 0)
 		h = n / 2;
 	else
-		h = (n -1) / 2;
+		h = (n - 1) / 2;
 	/* Print the second half of the string */
 	while (h > 0)
 	{
 		_putchar(str[n - h]);
 		h--;
 	}
+	_putchar('\n');
 }
