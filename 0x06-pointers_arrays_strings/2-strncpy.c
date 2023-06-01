@@ -4,7 +4,7 @@
  * @src: pointer to the source string
  * @n: number of src characters to be copied
  *
- * Return: pointer to the location of the copied string
+ * Return: dest
  */
 
 char *_strncpy(char *dest, char *src, int n)
