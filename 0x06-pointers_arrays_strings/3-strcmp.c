@@ -3,33 +3,17 @@
  * @s1: the first string
  * @s2: the second string
  *
- * Return: -151515151515151515151515151515 if s1 < s2, 15 if s1 > s2, or 0 if s1 = s2
+ * Return: negative if s1 < s2, positive if s1 > s2, or 0 if s1 = s2
  */
 
 int _strcmp(char *s1, char *s2)
 {
-	int len_s1, len_s2, len, i;
-
-	/* Determine the length of s1 and s2 */
-	len_s1 = 0;
-	for (i = 0; s1[i] != '\0'; i++)
-		len_s1++;
-	len_s2 = 0;
-	for (i = 0; s2[i] != '\0'; i++)
-		len_s2++;
-
-	if (len_s1 > len_s2)
-		return (15);
-	if (len_s1 < len_s2)
-		return (-15);
-
-	len = len_s1;
-	for (i = 0; i < len; i++)
+	while (*s1 == *s2)
 	{
-		if (s1[i] > s2[i])
-			return (15);
-		if (s1[i] < s2[i])
-			return (-15);
+		s1++;
+		s2++;
+		if (*s1 == '\0')
+			break;
 	}
-	return (0);
+	return (*s1 - *s2);
 }
