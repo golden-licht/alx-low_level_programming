@@ -11,10 +11,11 @@ char *_strchr(char *s, char c)
 {
 	int i;
 
-	if (*s == c)
-		return (s);
 	for (i = 0; *(s + i) != '\0'; i++)
 		if (*(s + i) == c)
 			return (s + i);
+	/* If @c is '\0', then return a pointer for the last byte of @s */
+	if (c == *(s + i))
+		return (s + i);
 	return (0);
 }
