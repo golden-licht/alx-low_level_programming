@@ -1,5 +1,5 @@
 /**
- * _strpbrk - locates the first occurrence in the 
+ * _strpbrk - locates the first occurrence in the
  * string s of any of the bytes in the string accept
  * @s: the string in which a character match is to be done
  * @accept: the character set against which match is to be checked
