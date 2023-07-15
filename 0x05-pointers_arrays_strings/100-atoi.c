@@ -21,7 +21,7 @@ int _atoi(char *s)
 		{
 			found = 1;
 			if (sign == 1)
-				n = 10 *n + (*s - 48);
+				n = 10 * n + (*s - 48);
 			else
 				n = 10 * n - (*s - 48);
 		}
