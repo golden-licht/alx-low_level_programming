@@ -20,13 +20,16 @@ int _atoi(char *s)
 		else if (*s >= '0' && *s <= '9')
 		{
 			found = 1;
-			n = 10 * n + (*s - 48);
+			if (sign == 1)
+				n = 10 *n + (*s - 48);
+			else
+				n = 10 * n - (*s - 48);
 		}
 		else if (found && !(*s >= '0' && *s <= '9'))
 			break;
 		s++;
 	}
 	if (found)
-		return (sign * n);
+		return (n);
 	return (0);
 }
