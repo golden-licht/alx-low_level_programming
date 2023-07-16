@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * create_array - create an array of chars, and
@@ -16,8 +17,15 @@ char *create_array(unsigned int size, char c)
 
 	i = 0;
 	if (size == 0)
+	{
 		return (NULL);
+	}
 	ptr = malloc(sizeof(char) * size);
+	if (ptr == NULL)
+	{
+		printf("Can't allocate %ld bytes", sizeof(char) * size);
+		return (NULL);
+	}
 	while (i < size)
 	{
 		ptr[i] = c;
