@@ -7,7 +7,7 @@
  * @s1: the first string
  * @s2: the second string
  *
- * Return: a pointer to the memory location containing the 
+ * Return: a pointer to the memory location containing the
  * concatenated string
  */
 
@@ -15,6 +15,11 @@ char *str_concat(char *s1, char *s2)
 {
 	char *ptr;
 
+	/* if one of the strings is a NULL, treat is as empty string */
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
 	ptr = malloc(strlen(s1) + strlen(s2) + 1);
 	if (ptr == NULL)
 	{
