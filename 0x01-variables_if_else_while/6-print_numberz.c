@@ -14,7 +14,7 @@ int main(void)
 
 	while (n < 58)
 	{
-		/* The ASCII equivalent of 0 is 48, 1 is 49 ... 9 is 58) */
+		/* The ASCII equivalent of 0 is 48, 1 is 49 ... 9 is 57) */
 		putchar(n);
 		n++;
 	}
