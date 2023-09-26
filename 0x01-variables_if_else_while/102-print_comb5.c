@@ -15,8 +15,12 @@ int main(void)
 		{
 			for (i = x; i <= 9; i++)
 			{
-				for (j = y + 1; j <= 9; j++)
+				for (j = 0; j <= 9; j++)
 				{
+					if ((10 * x) + y >= (10 * i) + j)
+					{
+						continue;
+					}
 					putchar(x + '0');
 					putchar(y + '0');
 					putchar(' ');
@@ -24,10 +28,9 @@ int main(void)
 					putchar(j + '0');
 					if (((10 * x) + y) != 98 || ((10 * i) + j) != 99)
 					{
-					putchar(',');
-
+						putchar(',');
+						putchar(' ');
 					}
-					putchar(' ');
 				}
 			}
 		}
