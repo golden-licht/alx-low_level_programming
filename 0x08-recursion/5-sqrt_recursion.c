@@ -12,9 +12,9 @@
   * Return: the square root of @n
   */
 
-int sqrt_helper(int n, int a, int b)
+int sqrt_helper(int n, long int a, long int b)
 {
-	int x;
+	long int x;
 
 	if (a * a  == n)
 		return (a);
