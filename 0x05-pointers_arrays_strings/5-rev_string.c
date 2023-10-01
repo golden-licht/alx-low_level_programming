@@ -5,22 +5,22 @@
 
 void rev_string(char *s)
 {
-	int i, ctr, j;
-	char str[2000];
+	int i, ctr;
 
 	ctr = 0;
+
 	/* Determine the length of the string */
-	for (i = 0; s[i] != 0; i++)
+	for (i = 0; s[i] != '\0'; i++)
 		ctr++;
-	ctr--;
-	/* Copy the string */
-	for (i = 0; s[i] != 0; i++)
-		str[i] = s[i];
-	i = 0;
-	/* Reverse the string */
-	for (j = ctr; j >= 0; j--)
+
+	for (i = 0; i < ctr - 1; i++)
 	{
-		s[i] = str[j];
-		i++;
+		char temp = s[i];
+
+		s[i] = s[ctr - 1];
+		s[ctr - 1] = temp;
+
+		ctr--;
 	}
+
 }
