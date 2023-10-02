@@ -22,6 +22,12 @@ int main(int argc, char *argv[])
 	count = 0;
 	cents = atoi(argv[1]);
 
+	if (cents < 0)
+	{
+		printf("0\n");
+		return (0);
+	}
+
 	count += cents / 25;
 	cents = cents % 25;
 
