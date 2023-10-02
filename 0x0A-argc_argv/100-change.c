@@ -13,41 +13,27 @@ int main(int argc, char *argv[])
 {
 	int cents, count;
 
-	count = 0;
 	if (argc != 2)
 	{
 		printf("Error\n");
 		return (1);
 	}
+
+	count = 0;
 	cents = atoi(argv[1]);
-	if (cents < 0)
-		printf("0\n");
-	while (cents > 0)
-	{
-		if (cents >= 25)
-		{
-			cents = cents - 25;
-		}
-		else if (cents >= 10)
-		{
-			cents = cents - 10;
-		}
-		else if (cents >= 5)
-		{
-			cents = cents - 5;
-		}
-		else if (cents >= 2)
-		{
-			cents = cents - 2;
-		}
-		else
-		{
-			cents = cents - 1;
-		}
-		count++;
-	}
+
+	count += cents / 25;
+	cents = cents % 25;
+
+	count += cents / 10;
+	cents = cents % 10;
+
+	count += cents / 2;
+	cents = cents % 2;
+
+	count += cents;
+
 	printf("%d\n", count);
+
 	return (0);
 }
-
-
