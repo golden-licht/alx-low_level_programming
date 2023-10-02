@@ -1,8 +1,9 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 /**
- * main - Add numbers passed as argument
+ * main - Add positive numbers passed as argument
  * @argc: argument count
  * @argv: argument vector
  *
@@ -18,22 +19,16 @@ int main(int argc, char *argv[])
 	{
 		n = atoi(argv[i]);
 
-		/**
-		 * If argv[i] isn't a number, atoi returns 0.
-		 * what if argv[i] is also the number 0?
-		 */
-		if (n == 0)
+		while (*argv[i] != '\0')
 		{
-			while (*argv[i] != '\0')
+			if (!isdigit(*argv[i]))
 			{
-				if (*argv[i] != '0')
-				{
-					printf("Error\n");
-					return (1);
-				}
-				argv[i]++;
+				printf("Error\n");
+				return (1);
 			}
+			argv[i]++;
 		}
+
 		sum = sum + n;
 	}
 	printf("%d\n", sum);
