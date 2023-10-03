@@ -7,7 +7,8 @@
 
 void print_number(int n)
 {
-	int rev, len;
+
+	int div, temp;
 
 	if (n == 0)
 	{
@@ -21,19 +22,21 @@ void print_number(int n)
 		n *= -1;
 	}
 
-	rev = 0;
-	len = 0;
+	div = 1;
+	temp = n;
 
-	while (n > 0)
+	while (temp > 0)
 	{
-		rev = (10 * rev) + (n % 10);
-		n /= 10;
-		len++;
+		temp /= 10;
+		div *= 10;
 	}
 
-	while (rev > 0)
+	div /= 10;
+
+	while (div > 0)
 	{
-		_putchar((rev % 10) + '0');
-		rev /= 10;
+		_putchar((n / div) + '0');
+		n %= div;
+		div /= 10;
 	}
 }
