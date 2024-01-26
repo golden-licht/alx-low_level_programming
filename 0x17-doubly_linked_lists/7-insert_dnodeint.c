@@ -1,52 +1,52 @@
 #include "lists.h"
 
+/**
+ * insert_dnodeint_at_index - Adds a node to a dlistint_t at a specified index
+ * @h: Pointer to pointer of the head of the list
+ * @idx: The idx we want our new node to be inserted
+ * @n: The value to our new node
+ *
+ * Return: Pointer to the newly created node, or NULL on failure
+*/
+
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
 	dlistint_t *new_node;
+	dlistint_t *current = *h;
+	unsigned int i = 0;
 
-	new_node = malloc(sizeof(dlistint_t));
-	if (new_node == NULL)
-		return (NULL);
-
-	if (*h == NULL)
+	if (idx == 0)
 	{
-		new_node->next = NULL;
-		new_node->prev = NULL;
-		*h = new_node;
+		new_node = add_dnodeint(h, n);
+		return (new_node);
 	}
-	else
-	{
-		dlistint_t *current = *h;
-		dlistint_t *prev = *h;
-		unsigned int i = 0;
 
-		while (current && i < idx)
+	while (current && i < idx)
+	{
+		current = current->next;
+		i++;
+	}
+
+	if (i == idx)
+	{
+		if (current == NULL)
 		{
-			prev = current;
-			current = current->next;
-			i++;
+			new_node = add_dnodeint_end(h, n);
+			return (new_node);
 		}
-		if (current == NULL && i == idx)
-		{
-			new_node->next = NULL;
-			new_node->prev = prev;
-			new_node->n = n;
-			prev->next = new_node;
-		}
-		else if (i == idx)
-		{
-			new_node->next = current;
-			new_node->prev = prev;
-			new_node->n = n;
-			prev->next = new_node;
-			current->prev = new_node;
-		}
-		else
-		{
-			free(new_node);
+
+		new_node = malloc(sizeof(dlistint_t));
+		if (new_node == NULL)
 			return (NULL);
-		}
+
+		new_node->n = n;
+		(current->prev)->next = new_node;
+		new_node->prev = current->prev;
+		new_node->next = current;
+		current->prev = new_node;
+
+		return (new_node);
 	}
 
-	return (new_node);
+	return (NULL);
 }
