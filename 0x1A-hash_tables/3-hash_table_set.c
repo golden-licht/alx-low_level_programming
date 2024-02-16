@@ -62,7 +62,6 @@ void insert_node(hash_node_t **head, const char *key, hash_node_t *new_node)
 	else
 	{
 		hash_node_t *current = *head;
-		hash_node_t *prev = current;
 		bool key_found = false;
 
 		while (current != NULL)
@@ -70,16 +69,14 @@ void insert_node(hash_node_t **head, const char *key, hash_node_t *new_node)
 			key_found = !strcmp(key, current->key);
 			if (key_found)
 				break;
-			prev = current;
 			current = current->next;
 		}
 
 		if (key_found)
 		{
-			prev->next = new_node;
-			new_node->next = current->next;
 			free(current->value);
-			free(current);
+			current->value = new_node->value;
+			free(new_node);
 		}
 		else
 		{
