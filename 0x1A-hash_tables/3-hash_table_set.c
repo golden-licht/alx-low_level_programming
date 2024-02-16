@@ -17,6 +17,7 @@
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index = 0;
+	const char *_key;
 	char *val = NULL;
 	hash_node_t *head = NULL, *new_node = NULL;
 
@@ -24,7 +25,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 
 	val = strdup(value);
-	if (val == NULL)
+	_key = strdup(key);
+	if (val == NULL || _key == NULL)
 		return (0);
 
 	new_node = malloc(sizeof(hash_node_t));
@@ -34,14 +36,14 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	}
 
-	index = key_index((const unsigned char *)key, ht->size);
+	index = key_index((const unsigned char *)_key, ht->size);
 
-	new_node->key = (char *)key;
+	new_node->key = (char *)_key;
 	new_node->value = val;
 	new_node->next = NULL;
 
 	head = ht->array[index];
-	insert_node(&head, key, (void *) new_node);
+	insert_node(&head, _key, (void *) new_node);
 	ht->array[index] = head;
 	return (1);
 }
