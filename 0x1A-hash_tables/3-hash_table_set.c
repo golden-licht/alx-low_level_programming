@@ -1,5 +1,7 @@
 #include "hash_tables.h"
+
 #include <stdbool.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -21,10 +23,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (ht == NULL || is_empty((char *) key) || value == NULL)
 		return (0);
 
-	val = malloc(strlen(value) + 1);
-	if (val == NULL)
-		return (0);
-	val = strcpy(val, value);
+	val = strdup(value);
 	if (val == NULL)
 		return (0);
 
@@ -42,7 +41,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	new_node->next = NULL;
 
 	head = ht->array[index];
-	insert_node(&head, key, new_node);
+	insert_node(&head, key, (void *) new_node);
+	ht->array[index] = head;
 	return (1);
 }
 
@@ -55,7 +55,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 void insert_node(hash_node_t **head, const char *key, hash_node_t *new_node)
 {
-	if (*head != NULL)
+	if (*head == NULL)
+	{
+		*head = new_node;
+	}
+	else
 	{
 		hash_node_t *current = *head;
 		hash_node_t *prev = current;
@@ -82,10 +86,6 @@ void insert_node(hash_node_t **head, const char *key, hash_node_t *new_node)
 			new_node->next = *head;
 			*head = new_node;
 		}
-	}
-	else /* if *head is NULL */
-	{
-		*head = new_node;
 	}
 }
 
