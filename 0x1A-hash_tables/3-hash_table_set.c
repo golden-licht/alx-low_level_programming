@@ -78,6 +78,7 @@ void insert_node(hash_node_t **head, const char *key, hash_node_t *new_node)
 		{
 			free(current->value);
 			current->value = new_node->value;
+			free(new_node->key);
 			free(new_node);
 		}
 		else
